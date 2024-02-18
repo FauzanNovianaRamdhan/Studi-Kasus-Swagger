@@ -1,125 +1,73 @@
 openapi: 3.0.0
 info:
-  title: To-Do List API
-  description: API untuk manajemen To-Do List
+  title: NBA Player
+  description: API Seputar NBA
   version: 1.0.0
 servers:
-  - url: http://localhost:8080
+  - url: https://www.balldontlie.io/api/v1
+    description: server utama NBA
+  - url: https://www.balldontlie.io/api/v2
+    description: server kedua NBA
 paths:
-  /todos:
+  /players:
     get:
-      summary: Mendapatkan semua daftar To-Do
-      description: Mengambil daftar semua tugas dalam To-Do List
+      summary: Get all players from all seasons
+      description: Cari semua pemain NBA
       responses:
         '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    task:
-                      type: string
-                    completed:
-                      type: boolean
-    post:
-      summary: Menambahkan tugas baru ke To-Do List
-      description: Menambahkan tugas baru ke To-Do List
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                task:
-                  type: string
-                  description: Nama tugas yang akan ditambahkan
-      responses:
-        '201':
-          description: Created
+          description: SUKSES BESAR BOS
           content:
             application/json:
               schema:
                 type: object
-                properties:
-                  id:
-                    type: integer
-                    description: ID dari tugas yang ditambahkan
-                  task:
-                    type: string
-                    description: Nama tugas yang ditambahkan
-                  completed:
-                    type: boolean
-                    description: Status tugas yang ditambahkan
-  '/todos/{todoId}':
-    get:
-      summary: Mendapatkan detail tugas To-Do berdasarkan ID
-      description: Mengambil detail tugas To-Do berdasarkan ID yang diberikan
-      parameters:
-        - name: todoId
-          in: path
-          description: ID dari tugas yang ingin dilihat
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  task:
-                    type: string
-                  completed:
-                    type: boolean
-    put:
-      summary: Memperbarui tugas To-Do berdasarkan ID
-      description: Memperbarui tugas To-Do berdasarkan ID yang diberikan
-      parameters:
-        - name: todoId
-          in: path
-          description: ID dari tugas yang ingin diperbarui
-          required: true
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                task:
-                  type: string
-                  description: Nama tugas yang diperbarui
-                completed:
-                  type: boolean
-                  description: Status tugas yang diperbarui
-      responses:
-        '200':
-          description: OK
-    delete:
-      summary: Menghapus tugas To-Do berdasarkan ID
-      description: Menghapus tugas To-Do berdasarkan ID yang diberikan
-      parameters:
-        - name: todoId
-          in: path
-          description: ID dari tugas yang ingin dihapus
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '204':
-          description: No Content
+                properties: 
+                  data: 
+                    type: array
+                    items: 
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        position:
+                          type: string
+                        height_feet:
+                          type: integer
+                        height_inches:
+                          type: integer
+                        weight_pounds:
+                          type: integer
+                        team:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            abbreviation:
+                              type: string
+                            city: 
+                              type: string
+                            conference:
+                              type: string
+                            division:
+                              type: string
+                            full_name:
+                              type: string
+                            name:
+                              type: string
+                  meta: 
+                    type: object
+                    properties: 
+                      total_pages:
+                        type: integer
+                      current_pages:
+                        type: integer
+                      next_page:
+                        type: integer
+                      per_page:
+                        type: integer
+                      total_count: 
+                        type: integer
+
